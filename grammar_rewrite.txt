@@ -23,7 +23,7 @@ resinfo* ::= ''
 
 methodspec ::= CFWS? method CFWS? EQUALS CFWS? result
 
-reasonspec ::= "reason" CFWS? EQUALS CFWS? value
+reasonspec ::= REASON CFWS? EQUALS CFWS? value
 
 propspec ::= ptype CFWS? DOT CFWS? property CFWS? EQUALS pvalue
 
@@ -46,7 +46,7 @@ special-smtp-verb ::= RCPTTO
 pvalue ::= CFWS? pvalue'
 pvalue' ::= value
 pvalue' ::= pvalue'' DomainName
-pvalue'' ::= local-part? "@"
+pvalue'' ::= local-part? ATSIGN
 pvalue'' ::= ''
 
 
@@ -105,7 +105,7 @@ qcontent ::= qtext
 qcontent ::= quoted-pair
 
 obs-local-part ::= word obs-local-part'
-obs-local-part' ::= DOT word obs-local-part' / ε
+obs-local-part' ::= DOT word obs-local-part'
 obs-local-part' ::= ''
 
 word ::= atom
@@ -116,8 +116,13 @@ atom ::= CFWS? atext+ CFWS?
 
 Keyword ::= Ldh-str
 Ldh-str ::= Ldh-str' Let-dig
-Ldh-str' ::= (ALPHA / DIGIT / "-") Ldh-str'
+
+Ldh-str' ::= Ldh-str'' Ldh-str'
 Ldh-str' ::= ''
+
+Ldh-str'' ::= ALPHA
+Ldh-str'' ::= DIGIT
+Ldh-str'' ::= MINUS
 
 value ::= token
 value ::= quoted-string
@@ -154,6 +159,7 @@ AUTH-RESULTS ::= Authentication-Results:
 MAILFROM ::= mailfrom
 NONE ::= none
 RCPTTO ::= rcptto
+REASON ::= reason
 
 CR ::= \r
 LF ::= \n
