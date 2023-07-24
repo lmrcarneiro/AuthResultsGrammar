@@ -1,7 +1,7 @@
 authres-header-field ::= AUTH-RESULTS authres-payload
 
 authres-payload ::= CFWS? authserv-id authres-payload' authres-payload'' CFWS? CRLF
-authres-payload' ::= CFWS? authres-version?
+authres-payload' ::= CFWS authres-version
 authres-payload' ::= ''
 authres-payload'' ::= no-result
 authres-payload'' ::= resinfo+
@@ -45,10 +45,16 @@ special-smtp-verb ::= RCPTTO
 
 pvalue ::= CFWS? pvalue'
 pvalue' ::= value
-pvalue' ::= pvalue'' DomainName
+pvalue' ::= pvalue'' domain-name
 pvalue'' ::= local-part? ATSIGN
 pvalue'' ::= ''
 
+domain-name ::= sub-domain domain-name'
+domain-name' ::= DOT sub-domain domain-name''
+domain-name'' ::= DOT sub-domain domain-name''
+domain-name'' ::= ''
+
+sub-domain ::= Let-dig Ldh-str?
 
 FWS ::= FWS' WSP+
 FWS ::= obs-FWS
@@ -87,7 +93,9 @@ obs-qp' ::= obs-NO-WS-CTL
 obs-qp' ::= LF
 obs-qp' ::= CR
 
-
+local-part ::= dot-atom
+local-part ::= quoted-string
+local-part ::= obs-local-part
 local-part? ::= local-part
 local-part? ::= ''
 
@@ -115,7 +123,11 @@ atom ::= CFWS? atext+ CFWS?
 
 
 Keyword ::= Ldh-str
+
 Ldh-str ::= Ldh-str' Let-dig
+
+Ldh-str? ::= Ldh-str
+Ldh-str? ::= ''
 
 Ldh-str' ::= Ldh-str'' Ldh-str'
 Ldh-str' ::= ''
@@ -123,6 +135,9 @@ Ldh-str' ::= ''
 Ldh-str'' ::= ALPHA
 Ldh-str'' ::= DIGIT
 Ldh-str'' ::= MINUS
+
+Let-dig ::= ALPHA
+Let-dig ::= DIGIT
 
 value ::= token
 value ::= quoted-string
@@ -238,7 +253,7 @@ ALPHA ::= Z
 EXCLAM ::= !
 DQUOTE ::= "
 HASHTAG ::= #
-DOLLAR ::= $
+DOLLAR ::= \$
 PERCENT ::= %
 AMPERSAND ::= &
 APOSTROPHE ::= '
