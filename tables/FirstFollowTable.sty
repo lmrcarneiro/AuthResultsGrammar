@@ -1,0 +1,470 @@
+\begin{table}[!ht]
+       \centering
+       \begin{tabular}{|l|l|l|l|}
+       \hline
+           Nonterminal & Nullable? & First & Follow \\ \hline
+           S & \xmark & Authentication-Results: \\ \hline
+           authres-header-field & \xmark & Authentication-Results: & \$ \\ \hline
+           authres-payload & \xmark & $\backslash$r, , $\backslash$t, !, \#, $\backslash$\$, \%, \&amp;, ', *, +, -, ., \^{}, \_, `, \{, |, \}, \~{}, ", ( & \$ \\ \hline
+           authres-payload' & \cmark & $\backslash$r, , $\backslash$t, DIGIT, ( & ;, $\backslash$r, , $\backslash$t, ( \\ \hline
+           authres-payload'' & \xmark & ;, $\backslash$r, , $\backslash$t, ( & $\backslash$r, , $\backslash$t, ( \\ \hline
+           authserv-id & \xmark & !, \#, $\backslash$\$, \%, \&amp;, ', *, +, -, ., \^{}, \_, `, \{, |, \}, \~{}, ", $\backslash$r, , $\backslash$t, ( & ;, $\backslash$r, , $\backslash$t, (, DIGIT \\ \hline
+           authres-version & \xmark & DIGIT & ;, $\backslash$r, , $\backslash$t, ( \\ \hline
+           no-result & \xmark & ;, $\backslash$r, , $\backslash$t, ( & $\backslash$r, , $\backslash$t, ( \\ \hline
+           resinfo & \xmark & ;, $\backslash$r, , $\backslash$t, ( & $\backslash$r, , $\backslash$t, (, ; \\ \hline
+           resinfo' & \cmark & reason, $\backslash$r, , $\backslash$t, ( & $\backslash$r,
+    , $\backslash$t, (, ALPHA, DIGIT, -, ; \\ \hline
+           resinfo'' & \cmark & $\backslash$r,
+    , $\backslash$t, (, ALPHA, DIGIT, - & $\backslash$r, , $\backslash$t, (, ; \\ \hline
+           resinfo+ & \xmark & ;, $\backslash$r, , $\backslash$t, ( & $\backslash$r, , $\backslash$t, ( \\ \hline
+           resinfo* & \cmark & ;, $\backslash$r, , $\backslash$t, ( & $\backslash$r, , $\backslash$t, ( \\ \hline
+           methodspec & \xmark & $\backslash$r,
+    , $\backslash$t, (, ALPHA, DIGIT, - & $\backslash$r,
+    , $\backslash$t, (, ALPHA, DIGIT, -, reason, ; \\ \hline
+           reasonspec & \xmark & reason & $\backslash$r,
+    , $\backslash$t, (, ALPHA, DIGIT, -, ; \\ \hline
+           propspec & \xmark & ALPHA, DIGIT, - & $\backslash$r, ,
+    $\backslash$t, (, ALPHA, DIGIT, -, ; \\ \hline
+           method & \xmark & ALPHA, DIGIT, - & =, $\backslash$r, , $\backslash$t, ( \\ \hline
+           method' & \cmark & /, $\backslash$r, , $\backslash$t, ( & =, $\backslash$r, , $\backslash$t, ( \\ \hline
+           method-version & \xmark & DIGIT & =, $\backslash$r, , $\backslash$t, ( \\ \hline
+           result & \xmark & ALPHA, DIGIT, - & $\backslash$r, ,
+    $\backslash$t, (, ALPHA, DIGIT, -, reason, ; \\ \hline
+           ptype & \xmark & ALPHA, DIGIT, - & ., $\backslash$r, , $\backslash$t, ( \\ \hline
+           property & \xmark & none,
+    rcptto, ALPHA, DIGIT, - & =, $\backslash$r, , $\backslash$t, ( \\ \hline
+           special-smtp-verb & \xmark & none, rcptto & =, $\backslash$r, , $\backslash$t, ( \\ \hline
+           pvalue & \xmark & $\backslash$r,
+    , $\backslash$t, !, \#, $\backslash$\$, \%, \&amp;, ', *, +, -, ., \^{}, \_, `, \{, |, \}, \~{}, ", @, (, 
+   ALPHA, DIGIT, /, =, ?, [, ] & $\backslash$r,
+    , $\backslash$t, (, ALPHA, DIGIT, -, ; \\ \hline
+           pvalue' & \xmark & !,
+    \#, $\backslash$\$, \%, \&amp;, ', *, +, -, ., \^{}, \_, `, \{, |, \}, \~{}, ", @, $\backslash$r, , $\backslash$t, (,
+    ALPHA, DIGIT, /, =, ?, [, ] & $\backslash$r,
+    , $\backslash$t, (, ALPHA, DIGIT, -, ; \\ \hline
+           pvalue'' & \cmark & @,
+    ", $\backslash$r, , $\backslash$t, (, ALPHA, DIGIT, !, \#, $\backslash$\$, 
+   \%, \&amp;, ', *, +, -, /, =, ?, \^{}, \_, `, [, |, ], \~{} & ALPHA, DIGIT \\ \hline
+           domain-name & \xmark & ALPHA, DIGIT & $\backslash$r, , 
+   $\backslash$t, (, ALPHA, DIGIT, -, ; \\ \hline
+           domain-name' & \xmark & . & $\backslash$r,
+    , $\backslash$t, (, ALPHA, DIGIT, -, ; \\ \hline
+           domain-name'' & \cmark & . & $\backslash$r,
+    , $\backslash$t, (, ALPHA, DIGIT, -, ; \\ \hline
+           sub-domain & \xmark & ALPHA, DIGIT & ., $\backslash$r, ,
+    $\backslash$t, (, ALPHA, DIGIT, -, ; \\ \hline
+           FWS & \cmark & $\backslash$r, , $\backslash$t & DIGIT, reason, ALPHA, -, (, ), , !, ", \#, $\backslash$\$,
+    \%, \&amp;, ', *, +, ,, ., /, :, ;, \&lt;, =, \&gt;, ?, @, [, ], \^{}, \_, `, 
+   \{, |, \}, \textasciitilde, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, 
+   \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, $\backslash$r, $\backslash$t, none, rcptto \\ \hline
+           FWS' & \cmark & $\backslash$r, , $\backslash$t & , $\backslash$t \\ \hline
+           FWS? & \cmark & $\backslash$r, , $\backslash$t & DIGIT, reason, ALPHA, -, (, ), , !, ", \#, $\backslash$\$,
+    \%, \&amp;, ', *, +, ,, ., /, :, ;, \&lt;, =, \&gt;, ?, @, [, ], \^{}, \_, `, 
+   \{, |, \}, \~{}, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, 
+   \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, $\backslash$r, $\backslash$t, none, rcptto \\ \hline
+           obs-FWS & \cmark & , $\backslash$t, $\backslash$r & DIGIT, reason, ALPHA, -, (, ), , !, ", \#, $\backslash$\$,
+    \%, \&amp;, ', *, +, ,, ., /, :, ;, \&lt;, =, \&gt;, ?, @, [, ], \^{}, \_, `, 
+   \{, |, \}, \~{}, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, 
+   \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, $\backslash$r, $\backslash$t, none, rcptto \\ \hline
+           CFWS & \cmark & $\backslash$r, , $\backslash$t, ( & DIGIT, reason, ALPHA, -, $\backslash$r, !, \#, $\backslash$\$, \%, 
+   \&amp;, ', *, +, ., \^{}, \_, `, \{, |, \}, \~{}, ", , $\backslash$t, (, ;, none, =, rcptto, 
+   /, @, ?, [, ] \\ \hline
+           CFWS' & \xmark & $\backslash$r, , $\backslash$t, ( & DIGIT, reason, ALPHA, -, $\backslash$r, , $\backslash$t, !, \#, $\backslash$\$, 
+   \%, \&amp;, ', *, +, ., \^{}, \_, `, \{, |, \}, \~{}, ", (, ;, none, =, rcptto, /, 
+   @, ?, [, ] \\ \hline
+           CFWS'' & \cmark & $\backslash$r, , $\backslash$t, ( & DIGIT, reason, ALPHA, -, $\backslash$r, , $\backslash$t, !, \#, $\backslash$\$, 
+   \%, \&amp;, ', *, +, ., \^{}, \_, `, \{, |, \}, \~{}, ", (, ;, none, =, rcptto, /, 
+   @, ?, [, ] \\ \hline
+           CFWS? & \cmark & $\backslash$r, , $\backslash$t, ( & $\backslash$r,
+    !, \#, $\backslash$\$, \%, \&amp;, ', *, +, -, ., \^{}, \_, `, \{, |, \}, \~{}, ", , $\backslash$t, (, ;, 
+   none, ALPHA, DIGIT, =, rcptto, /, @, ?, [, ] \\ \hline
+           comment & \xmark & ( & DIGIT, reason, ALPHA, -, $\backslash$r, , $\backslash$t, (, ), !, 
+   ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, ., /, :, ;, \&lt;, =, \&gt;, ?, @, [, ], 
+   \^{}, \_, `, \{, |, \}, \~{}, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, 
+   \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, none, rcptto \\ \hline
+           comment' & \cmark & $\backslash$r,
+    , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, \&gt;, 
+   ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, 
+   \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del & ), $\backslash$r, , $\backslash$t \\ \hline
+           ccontent & \xmark & ,
+    !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, \&gt;, ?, @, 
+   [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, \^{}K, \^{}L,
+    \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           quoted-pair & \xmark & $\backslash$ & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           quoted-pair' & \xmark & !, ", \#, $\backslash$\$, \%, \&amp;, ', (, ), *, +, ,, -, ., /, :, ;, \&lt;, =, \&gt;, ?, @, [, $\backslash$, ], \^{}, \_, `, \{, |, \}, \~{}, , $\backslash$t & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           obs-qp & \xmark & $\backslash$ & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           obs-qp' & \xmark & \^{}@, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, $\backslash$n, $\backslash$r & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           local-part & \xmark & ",
+    $\backslash$r, , $\backslash$t, (, ALPHA, DIGIT, !, \#, $\backslash$\$, \%, 
+   \&amp;, ', *, +, -, /, =, ?, \^{}, \_, `, [, |, ], \~{} & @ \\ \hline
+           local-part? & \cmark & ",
+    $\backslash$r, , $\backslash$t, (, ALPHA, DIGIT, !, \#, $\backslash$\$, \%, 
+   \&amp;, ', *, +, -, /, =, ?, \^{}, \_, `, [, |, ], \~{} & @ \\ \hline
+           dot-atom & \xmark & $\backslash$r,
+    , $\backslash$t, (, ALPHA, DIGIT, !, \#, $\backslash$\$, \%, 
+   \&amp;, ', *, +, -, /, =, ?, \^{}, \_, `, [, |, ], \~{} & @ \\ \hline
+           dot-atom-text & \xmark & ALPHA, DIGIT, !, \#, $\backslash$\$, \%, \&amp;, ', *, +, 
+   -, /, =, ?, \^{}, \_, `, [, |, ], \~{} & $\backslash$r, , $\backslash$t, (, @ \\ \hline
+           dot-atom-text' & \cmark & . & $\backslash$r, , $\backslash$t, (, @ \\ \hline
+           quoted-string & \xmark & ", $\backslash$r, , $\backslash$t, ( & .,
+    ;, $\backslash$r, , $\backslash$t, (, DIGIT, ALPHA, -, @ \\ \hline
+           quoted-string' & \cmark & $\backslash$r,
+    , $\backslash$t, !, \#, $\backslash$\$, \%, \&amp;, ', (, ), *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, 
+   \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del & ", $\backslash$r, , $\backslash$t \\ \hline
+           qcontent & \xmark & ,
+    !, \#, $\backslash$\$, \%, \&amp;, ', (, ), *, +, ,, -, ., /, :, ;, \&lt;, =, \&gt;, ?, 
+   @, [, ], \^{}, \_, `, \{, |, \}, \~{}, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, \^{}K, \^{}L,
+    \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del & ",
+    $\backslash$r, , $\backslash$t, !, \#, $\backslash$\$, \%, \&amp;, ', (, ), *, +, ,, -, ., /, :, ;, \&lt;, =,
+    \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, 
+   \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           obs-local-part & \xmark & ",
+    $\backslash$r, , $\backslash$t, ALPHA, DIGIT, !, \#, $\backslash$\$, \%, 
+   \&amp;, ', *, +, -, /, =, ?, \^{}, \_, `, [, |, ], \~{}, ( & @ \\ \hline
+           obs-local-part' & \cmark & . & @ \\ \hline
+           word & \xmark & ",
+    $\backslash$r, , $\backslash$t, ALPHA, DIGIT, !, \#, $\backslash$\$, \%, 
+   \&amp;, ', *, +, -, /, =, ?, \^{}, \_, `, [, |, ], \~{}, ( & ., @ \\ \hline
+           atom & \xmark & $\backslash$r,
+    , $\backslash$t, ALPHA, DIGIT, !, \#, $\backslash$\$, \%, \&amp;, 
+   ', *, +, -, /, =, ?, \^{}, \_, `, [, |, ], \~{}, ( & ., @ \\ \hline
+           Keyword & \xmark & ALPHA, DIGIT, - & =, 
+   $\backslash$r, , $\backslash$t, (, /, ALPHA, DIGIT, -, reason, .,
+    ; \\ \hline
+           Ldh-str & \xmark & ALPHA, DIGIT, - & =, 
+   $\backslash$r, , $\backslash$t, (, /, ALPHA, DIGIT, -, reason, .,
+    ; \\ \hline
+           Ldh-str? & \cmark & ALPHA, DIGIT, - & ., 
+   $\backslash$r, , $\backslash$t, (, ALPHA, DIGIT, -, ; \\ \hline
+           Ldh-str' & \cmark & ALPHA, DIGIT, - & ALPHA, DIGIT \\ \hline
+           Ldh-str'' & \xmark & ALPHA, DIGIT, - & ALPHA, DIGIT, - \\ \hline
+           Let-dig & \xmark & ALPHA, DIGIT & ., $\backslash$r, ,
+    $\backslash$t, (, ALPHA, DIGIT, -, =, /, reason, ; \\ \hline
+           value & \xmark & !, \#, $\backslash$\$, \%, \&amp;, ', *, +, -, ., \^{}, \_, `, \{, |, \}, \~{}, ", $\backslash$r, , $\backslash$t, ( & ;,
+    $\backslash$r, , $\backslash$t, (, DIGIT, ALPHA, - \\ \hline
+           atext+ & \xmark & ALPHA, DIGIT, !, \#, $\backslash$\$, \%, \&amp;, ', *, +, 
+   -, /, =, ?, \^{}, \_, `, [, |, ], \~{} & $\backslash$r, , $\backslash$t, (, ., @ \\ \hline
+           atext* & \cmark & ALPHA, DIGIT, !, \#, $\backslash$\$, \%, \&amp;, ', *, +, 
+   -, /, =, ?, \^{}, \_, `, [, |, ], \~{} & $\backslash$r, , $\backslash$t, (, ., @ \\ \hline
+           CRLF? & \cmark & $\backslash$r & , $\backslash$t \\ \hline
+           WSP+ & \xmark & , $\backslash$t & DIGIT, reason, ALPHA, -, (, ), , !, ", \#, $\backslash$\$,
+    \%, \&amp;, ', *, +, ,, ., /, :, ;, \&lt;, =, \&gt;, ?, @, [, ], \^{}, \_, `, 
+   \{, |, \}, \~{}, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, 
+   \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, $\backslash$r, $\backslash$t, none, rcptto \\ \hline
+           WSP* & \cmark & , $\backslash$t & $\backslash$r,
+    DIGIT, reason, ALPHA, -, (, ), , !, ", \#, 
+   $\backslash$\$, \%, \&amp;, ', *, +, ,, ., /, :, ;, \&lt;, =, \&gt;, ?, @, [, ], \^{}, \_, 
+   `, \{, |, \}, \~{}, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, 
+   \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, $\backslash$t, none, rcptto \\ \hline
+           DIGIT+ & \xmark & DIGIT & ;, $\backslash$r, , $\backslash$t, (, = \\ \hline
+           DIGIT* & \cmark & DIGIT & ;, $\backslash$r, , $\backslash$t, (, = \\ \hline
+           AUTH-RESULTS & \xmark & Authentication-Results: & $\backslash$r, , $\backslash$t, !, \#, $\backslash$\$, \%, \&amp;, ', *, +, -, ., \^{}, \_, `, \{, |, \}, \~{}, ", ( \\ \hline
+           MAILFROM & \xmark & mailfrom \\ \hline
+           NONE & \xmark & none & $\backslash$r, , $\backslash$t, (, = \\ \hline
+           RCPTTO & \xmark & rcptto & =, $\backslash$r, , $\backslash$t, ( \\ \hline
+           REASON & \xmark & reason & =, $\backslash$r, , $\backslash$t, ( \\ \hline
+           CR & \xmark & $\backslash$r & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, $\backslash$n \\ \hline
+           LF & \xmark & $\backslash$n & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, \$ \\ \hline
+           CRLF & \xmark & $\backslash$r & , $\backslash$t, \$ \\ \hline
+           SP & \xmark & ,
+    $\backslash$t, $\backslash$r, ), !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, DIGIT, reason, ALPHA, none, rcptto \\ \hline
+           HTAB & \xmark & $\backslash$t & ,
+    $\backslash$t, $\backslash$r, ), !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, DIGIT, reason, ALPHA, none, rcptto \\ \hline
+           WSP & \xmark & , $\backslash$t & ,
+    $\backslash$t, $\backslash$r, ), !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, DIGIT, reason, ALPHA, none, rcptto \\ \hline
+           DIGIT & \xmark & DIGIT & ALPHA, DIGIT, -, ., $\backslash$r, , $\backslash$t, (, =, /, 
+   reason, ;, !, \#, $\backslash$\$, \%, \&amp;, ', *, +, ?, \^{}, \_, `, [, |, ], \~{}, @ \\ \hline
+           ALPHA & \xmark & ALPHA & ALPHA, DIGIT, -, ., $\backslash$r, , $\backslash$t, (, =, /, reason, !, \#, $\backslash$\$, \%, \&amp;, ', *, +, ?, 
+   \^{}, \_, `, [, |, ], \~{}, ;, @ \\ \hline
+           EXCLAM & \xmark & ! & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, ALPHA, DIGIT \\ \hline
+           DQUOTE & \xmark & " & $\backslash$r,
+    , $\backslash$t, (, ", !, \#, $\backslash$\$, \%, \&amp;, ', ), *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, 
+   \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, DIGIT, ALPHA \\ \hline
+           HASHTAG & \xmark & \# & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, ALPHA, DIGIT \\ \hline
+           DOLLAR & \xmark & $\backslash$\$ & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, ALPHA, DIGIT \\ \hline
+           PERCENT & \xmark & \% & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, ALPHA, DIGIT \\ \hline
+           AMPERSAND & \xmark & \&amp; & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, ALPHA, DIGIT \\ \hline
+           APOSTROPHE & \xmark & ' & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, ALPHA, DIGIT \\ \hline
+           LPAR & \xmark & ( & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           RPAR & \xmark & ) & DIGIT, reason, ALPHA, -, $\backslash$r, , $\backslash$t, (, ), !, 
+   ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, ., /, :, ;, \&lt;, =, \&gt;, ?, @, [, ], 
+   \^{}, \_, `, \{, |, \}, \~{}, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, 
+   \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, none, rcptto \\ \hline
+           ASTERISK & \xmark & * & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, ALPHA, DIGIT \\ \hline
+           PLUS & \xmark & + & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, ALPHA, DIGIT \\ \hline
+           COMMA & \xmark & , & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           MINUS & \xmark & - & ALPHA, DIGIT, -, ), $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, 
+   \%, \&amp;, ', *, +, ,, ., /, :, ;, \&lt;, =, \&gt;, ?, @, [, ], \^{}, \_, `, \{,
+    |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, 
+   \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           DOT & \xmark & . & none,
+    rcptto, ALPHA, DIGIT, -, $\backslash$r, , $\backslash$t, (, !, 
+   \#, $\backslash$\$, \%, \&amp;, ', *, +, /, =, ?, \^{}, \_, `, [, |, ], \~{}, ", ), ,, ., :, 
+   ;, \&lt;, \&gt;, @, \{, \}, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, \^{}K, \^{}L, \^{}N, 
+   \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           SLASH & \xmark & / & DIGIT, $\backslash$r, , $\backslash$t, (, ), !, ", \#, $\backslash$\$, \%, \&amp;, ', *,
+    +, ,, -, ., /, :, ;, \&lt;, =, \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, $\backslash$,
+    \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U,
+    \^{}V, \^{}W, \^{}X, \^{}Y, del, ALPHA \\ \hline
+           COLON & \xmark & : & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           SEMICOLON & \xmark & ; & none,
+    $\backslash$r, , $\backslash$t, (, ALPHA, DIGIT, -, ), !, ", \#,
+    $\backslash$\$, \%, \&amp;, ', *, +, ,, ., /, :, ;, \&lt;, =, \&gt;, ?, @, [, ], \^{}, \_, 
+   `, \{, |, \}, \~{}, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, 
+   \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           LESS & \xmark & \&lt; & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           EQUALS & \xmark & = & ALPHA, DIGIT, -, $\backslash$r, , $\backslash$t, (, !, \#, $\backslash$\$, \%, 
+   \&amp;, ', *, +, ., \^{}, \_, `, \{, |, \}, \~{}, ", @, /, =, ?, [, ], ), ,, :, ;,
+    \&lt;, \&gt;, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, 
+   \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           GREATER & \xmark & \&gt; & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           QMARK & \xmark & ? & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, ALPHA, DIGIT \\ \hline
+           ATSIGN & \xmark & @ & ALPHA, DIGIT, ), $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, 
+   \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, \&gt;, ?, @, [, ], \^{}, \_, `, \{,
+    |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, 
+   \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           LBRACK & \xmark & [ & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, ALPHA, DIGIT \\ \hline
+           BSLASH & \xmark & $\backslash$ & !,
+    ", \#, $\backslash$\$, \%, \&amp;, ', (, ), *, +, ,, -, ., /, :, ;, \&lt;, =, \&gt;, ?, 
+   @, [, $\backslash$, ], \^{}, \_, `, \{, |, \}, \~{}, , $\backslash$t, \^{}@, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, 
+   \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, $\backslash$n, $\backslash$r \\ \hline
+           RBRACK & \xmark & ] & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, ALPHA, DIGIT \\ \hline
+           CIRCUM & \xmark & \^{} & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, ALPHA, DIGIT \\ \hline
+           UNDERSCR & \xmark & \_ & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, ALPHA, DIGIT \\ \hline
+           GRAVEACC & \xmark & ` & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, ALPHA, DIGIT \\ \hline
+           LCBRACK & \xmark & \{ & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, DIGIT, ALPHA \\ \hline
+           PIPE & \xmark & | & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, ALPHA, DIGIT \\ \hline
+           RCBRACK & \xmark & \} & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, DIGIT, ALPHA \\ \hline
+           TILDE & \xmark & \~{} & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del, ALPHA, DIGIT \\ \hline
+           NULL & \xmark & \^{}@ & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLA & \xmark & \^{}A & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLB & \xmark & \^{}B & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLC & \xmark & \^{}C & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLD & \xmark & \^{}D & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLE & \xmark & \^{}E & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLF & \xmark & \^{}F & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLG & \xmark & \^{}G & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLH & \xmark & \^{}H & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLK & \xmark & \^{}K & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLL & \xmark & \^{}L & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLN & \xmark & \^{}N & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLO & \xmark & \^{}O & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLP & \xmark & \^{}P & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLQ & \xmark & \^{}Q & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLR & \xmark & \^{}R & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLS & \xmark & \^{}S & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLT & \xmark & \^{}T & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLU & \xmark & \^{}U & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLV & \xmark & \^{}V & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLW & \xmark & \^{}W & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLX & \xmark & \^{}X & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           CTRLY & \xmark & \^{}Y & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           DEL & \xmark & del & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           VCHAR & \xmark & !, ", \#, $\backslash$\$, \%, \&amp;, ', (, ), *, +, ,, -, ., /, :, ;, \&lt;, =, \&gt;, ?, @, [, $\backslash$, ], \^{}, \_, `, \{, |, \}, \~{} & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           atext & \xmark & ALPHA, DIGIT, !, \#, $\backslash$\$, \%, \&amp;, ', *, +, 
+   -, /, =, ?, \^{}, \_, `, [, |, ], \~{} & $\backslash$r, , $\backslash$t, (, ., 
+   ALPHA, DIGIT, !, \#, $\backslash$\$, \%, \&amp;, ', *, +, 
+   -, /, =, ?, \^{}, \_, `, [, |, ], \~{}, @ \\ \hline
+           ctext & \xmark & ,
+    !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, \&gt;, ?, @, 
+   [, ], \^{}, \_, `, \{, |, \}, \~{}, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, \^{}K, \^{}L, \^{}N, 
+   \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           obs-ctext & \xmark & \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           obs-NO-WS-CTL & \xmark & \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del & ),
+    $\backslash$r, , $\backslash$t, !, ", \#, $\backslash$\$, \%, \&amp;, ', *, +, ,, -, ., /, :, ;, \&lt;, =, 
+   \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, (, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G,
+    \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           qtext & \xmark & ,
+    !, \#, $\backslash$\$, \%, \&amp;, ', (, ), *, +, ,, -, ., /, :, ;, \&lt;, =, \&gt;, ?, 
+   @, [, ], \^{}, \_, `, \{, |, \}, \~{}, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, \^{}K, \^{}L, 
+   \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del & ",
+    $\backslash$r, , $\backslash$t, !, \#, $\backslash$\$, \%, \&amp;, ', (, ), *, +, ,, -, ., /, :, ;, \&lt;, =,
+    \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, 
+   \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           obs-qtext & \xmark & \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del & ",
+    $\backslash$r, , $\backslash$t, !, \#, $\backslash$\$, \%, \&amp;, ', (, ), *, +, ,, -, ., /, :, ;, \&lt;, =,
+    \&gt;, ?, @, [, ], \^{}, \_, `, \{, |, \}, \~{}, $\backslash$, \^{}A, \^{}B, \^{}C, \^{}D, \^{}E, \^{}F, \^{}G, 
+   \^{}H, \^{}K, \^{}L, \^{}N, \^{}O, \^{}P, \^{}Q, \^{}R, \^{}S, \^{}T, \^{}U, \^{}V, \^{}W, \^{}X, \^{}Y, del \\ \hline
+           token & \xmark & !, \#, $\backslash$\$, \%, \&amp;, ', *, +, -, ., \^{}, \_, `, \{, |, \}, \~{} & ;,
+    $\backslash$r, , $\backslash$t, (, DIGIT, ALPHA, - \\ \hline
+       \end{tabular}
+   \end{table}

@@ -1,0 +1,7 @@
+CIRCUM \^ -> \^{}
+TILDE \~ -> \~{}
+
+✔ -> \cmark
+✖ -> \xmark
+
+ε -> \epsilon
