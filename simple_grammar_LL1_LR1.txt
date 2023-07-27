@@ -1,0 +1,15 @@
+S' ::= val: Result*
+Result ::= res Prop*
+Result* ::= Result Result*
+Result* ::= ''
+Prop ::= prop
+Prop* ::= Prop Prop*
+Prop* ::= ''
+
+S -> val: Result*
+Result -> res Prop*
+Result* -> Result Result*
+Result* -> ''
+Prop -> prop
+Prop* -> Prop Prop*
+Prop* -> ''
