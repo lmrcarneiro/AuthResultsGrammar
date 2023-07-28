@@ -310,6 +310,9 @@ CTRLX ::= ^X
 CTRLY ::= ^Y
 DEL ::= del
 
+VCHAR ::= ALPHA
+VHCAR ::= DIGIT
+
 VCHAR ::= EXCLAM
 VCHAR ::= DQUOTE
 VCHAR ::= HASHTAG
@@ -347,6 +350,7 @@ VCHAR ::= TILDE
 
 atext ::= ALPHA
 atext ::= DIGIT
+
 atext ::= EXCLAM
 atext ::= HASHTAG
 atext ::= DOLLAR
@@ -367,6 +371,8 @@ atext ::= PIPE
 atext ::= RBRACK
 atext ::= TILDE
 
+ctext ::= ALPHA
+ctext ::= DIGIT
 
 ctext ::= SP
 ctext ::= EXCLAM
@@ -429,6 +435,7 @@ obs-NO-WS-CTL ::= CTRLX
 obs-NO-WS-CTL ::= CTRLY
 obs-NO-WS-CTL ::= DEL
 
+qtext ::= ALPHA
 
 qtext ::= SP
 qtext ::= EXCLAM
@@ -468,6 +475,8 @@ qtext ::= obs-qtext
 
 obs-qtext ::= obs-NO-WS-CTL
 
+token ::= ALPHA
+token ::= DIGIT
 
 token ::= EXCLAM
 token ::= HASHTAG
