@@ -436,6 +436,7 @@ obs-NO-WS-CTL ::= CTRLY
 obs-NO-WS-CTL ::= DEL
 
 qtext ::= ALPHA
+qtext ::= DIGIT
 
 qtext ::= SP
 qtext ::= EXCLAM
