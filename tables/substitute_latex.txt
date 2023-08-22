@@ -3,6 +3,8 @@
 CIRCUM \^ -> \^{}
 TILDE \~ -> \~{}
 
+\&amp; -> \&
+
 ✔ -> \cmark
 ✖ -> \xmark
 
